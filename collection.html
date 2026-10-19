@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой крипто-кошелёк — ArtChain</title>
+</head>
+<body>
+
+<header>
+    <h1>ArtChain</h1>
+    <p>Маркетплейс цифрового искусства и NFT-токенов</p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="catalog.html">Каталог работ</a></li>
+        <li><a href="detail.html">Карточка работы</a></li>
+        <li><a href="collection.html">Мой кошелёк</a></li>
+        <li><a href="checkout.html">Сделать ставку</a></li>
+    </ul>
+</nav>
+
+<main>
+    <h2>Мой крипто-кошелёк</h2>
+    <p>
+        Приобретённые токены с группировкой по сети блокчейна.
+        Для каждой сети указана суммарная стоимость покупок.
+    </p>
+
+    <table border="1">
+        <caption>Приобретённые токены</caption>
+
+        <thead>
+            <tr>
+                <th scope="col">Сеть блокчейна</th>
+                <th scope="col">Название работы</th>
+                <th scope="col">Автор</th>
+                <th scope="col">Стоимость покупки</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <!-- Ethereum: 2 работы -->
+            <tr>
+                <th scope="rowgroup" rowspan="2">Ethereum</th>
+                <td>«Цифровой закат»</td>
+                <td>Алиса Морозова</td>
+                <td>0.25 ETH</td>
+            </tr>
+            <tr>
+                <td>«Пиксельный океан»</td>
+                <td>Дмитрий Волков</td>
+                <td>0.30 ETH</td>
+            </tr>
+
+            <!-- Polygon: 2 работы -->
+            <tr>
+                <th scope="rowgroup" rowspan="2">Polygon</th>
+                <td>«Неоновый город»</td>
+                <td>Игорь Соколов</td>
+                <td>0.12 ETH</td>
+            </tr>
+            <tr>
+                <td>«Абстракция №7»</td>
+                <td>Ольга Кузнецова</td>
+                <td>0.05 ETH</td>
+            </tr>
+
+            <!-- Solana: 1 работа -->
+            <tr>
+                <th scope="rowgroup" rowspan="1">Solana</th>
+                <td>«Фрактальный лес»</td>
+                <td>Мария Лебедева</td>
+                <td>0.08 SOL</td>
+            </tr>
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <td colspan="3">Итого по кошельку (в пересчёте на ETH):</td>
+                <td>0.80 ETH</td>
+            </tr>
+            <tr>
+                <td colspan="4">Комиссия площадки 1,5% — 0.012 ETH</td>
+            </tr>
+        </tfoot>
+    </table>
+</main>
+
+<footer>
+    <p>&copy; 2026 ArtChain. Все права защищены.</p>
+    <p>Связь: <a href="mailto:support@artchain.example">support@artchain.example</a></p>
+</footer>
+
+</body>
+</html>
