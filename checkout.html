@@ -4,42 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Создание ставки — ArtChain</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="page">
 
-<header>
-    <h1>ArtChain</h1>
-    <p>Маркетплейс цифрового искусства и NFT-токенов</p>
+<header class="page__header header">
+    <h1 class="header__title">ArtChain</h1>
+    <p class="header__text">Маркетплейс цифрового искусства и NFT-токенов</p>
 </header>
 
-<nav>
-    <ul>
-        <li><a href="index.html">Главная</a></li>
-        <li><a href="catalog.html">Каталог работ</a></li>
-        <li><a href="detail.html">Карточка работы</a></li>
-        <li><a href="collection.html">Мой кошелёк</a></li>
-        <li><a href="checkout.html">Сделать ставку</a></li>
+<nav class="page__menu menu">
+    <ul class="menu__list">
+        <li class="menu__item"><a href="index.html" class="menu__link">Главная</a></li>
+        <li class="menu__item"><a href="catalog.html" class="menu__link">Каталог работ</a></li>
+        <li class="menu__item"><a href="detail.html" class="menu__link">Карточка работы</a></li>
+        <li class="menu__item"><a href="collection.html" class="menu__link">Мой кошелёк</a></li>
+        <li class="menu__item"><a href="checkout.html" aria-current="page" class="menu__link menu__link--active">Сделать ставку</a></li>
     </ul>
 </nav>
 
-<main>
-    <h2>Создание ставки</h2>
-    <p>Ставка на работу «Цифровой закат». Все поля обязательны.</p>
+<main class="page__content content">
+    <h2 class="content__title">Создание ставки</h2>
+    <p class="content__text">Ставка на работу «Цифровой закат». Все поля обязательны.</p>
 
-    <form action="/api/bids" method="post">
+    <form action="/api/bids" method="post" class="content__form bid-form">
 
-        <!-- 1. number: сумма -->
-        <p>
-            <label for="bid-amount">Сумма ставки:</label><br>
-            <input type="number" id="bid-amount" name="bid_amount"
-                   min="0.01" max="100" step="0.01"
-                   placeholder="0.25" required>
+        
+        <p class="bid-form__text">
+            <label for="bid-amount" class="bid-form__label">Сумма ставки:</label><br>
+            <input type="number" id="bid-amount" name="bid_amount" min="0.01" max="100" step="0.01" placeholder="0.25" required class="bid-form__input">
         </p>
 
-        <!-- 2. select: валюта -->
-        <p>
-            <label for="bid-currency">Валюта ставки:</label><br>
-            <select id="bid-currency" name="bid_currency" required>
+        
+        <p class="bid-form__text">
+            <label for="bid-currency" class="bid-form__label">Валюта ставки:</label><br>
+            <select id="bid-currency" name="bid_currency" required class="bid-form__input">
                 <option value="">— выберите валюту —</option>
                 <option value="ETH">ETH (Ethereum)</option>
                 <option value="POL">POL (Polygon)</option>
@@ -48,67 +47,58 @@
             </select>
         </p>
 
-        <!-- 3. datetime-local: срок действия -->
-        <p>
-            <label for="bid-expires">Срок действия ставки:</label><br>
-            <input type="datetime-local" id="bid-expires" name="bid_expires" required>
+        
+        <p class="bid-form__text">
+            <label for="bid-expires" class="bid-form__label">Срок действия ставки:</label><br>
+            <input type="datetime-local" id="bid-expires" name="bid_expires" required class="bid-form__input">
         </p>
 
-        <!-- 4. email -->
-        <p>
-            <label for="bid-email">Email для уведомлений:</label><br>
-            <input type="email" id="bid-email" name="bid_email"
-                   placeholder="you@example.com" required>
+        
+        <p class="bid-form__text">
+            <label for="bid-email" class="bid-form__label">Email для уведомлений:</label><br>
+            <input type="email" id="bid-email" name="bid_email" placeholder="you@example.com" required class="bid-form__input">
         </p>
 
-        <!-- 5. text + pattern: кошелёк -->
-        <p>
-            <label for="wallet-id">Идентификатор кошелька (0x + 40 hex):</label><br>
-            <input type="text" id="wallet-id" name="wallet_id"
-                   pattern="^0x[a-fA-F0-9]{40}$"
-                   placeholder="0x0123abc...def"
-                   title="40 шестнадцатеричных символов после 0x"
-                   required>
+        
+        <p class="bid-form__text">
+            <label for="wallet-id" class="bid-form__label">Идентификатор кошелька (0x + 40 hex):</label><br>
+            <input type="text" id="wallet-id" name="wallet_id" pattern="^0x[a-fA-F0-9]{40}$" placeholder="0x0123abc...def" title="40 шестнадцатеричных символов после 0x" required class="bid-form__input">
         </p>
 
-        <!-- 6. radio: тип ставки -->
-        <fieldset>
-            <legend>Тип ставки:</legend>
-            <p>
-                <input type="radio" id="bid-type-fixed" name="bid_type"
-                       value="fixed" checked>
-                <label for="bid-type-fixed">Фиксированная</label>
+        
+        <fieldset class="bid-form__group">
+            <legend class="bid-form__legend">Тип ставки:</legend>
+            <p class="bid-form__text">
+                <input type="radio" id="bid-type-fixed" name="bid_type" value="fixed" checked class="bid-form__input bid-form__input--radio">
+                <label for="bid-type-fixed" class="bid-form__label">Фиксированная</label>
 
-                <input type="radio" id="bid-type-auction" name="bid_type"
-                       value="auction">
-                <label for="bid-type-auction">Аукционная</label>
+                <input type="radio" id="bid-type-auction" name="bid_type" value="auction" class="bid-form__input bid-form__input--radio">
+                <label for="bid-type-auction" class="bid-form__label">Аукционная</label>
             </p>
         </fieldset>
 
-        <!-- 7. range: приоритет -->
-        <p>
-            <label for="bid-priority">Приоритет ставки (1–5):</label><br>
-            <input type="range" id="bid-priority" name="bid_priority"
-                   min="1" max="5" value="3">
+        
+        <p class="bid-form__text">
+            <label for="bid-priority" class="bid-form__label">Приоритет ставки (1–5):</label><br>
+            <input type="range" id="bid-priority" name="bid_priority" min="1" max="5" value="3" class="bid-form__input bid-form__input--range">
         </p>
 
-        <!-- 8. checkbox: согласие с комиссией -->
-        <p>
-            <input type="checkbox" id="fee-agree" name="fee_agree"
-                   value="yes" required>
-            <label for="fee-agree">Я согласен с комиссией площадки 1,5%</label>
+        
+        <p class="bid-form__text">
+            <input type="checkbox" id="fee-agree" name="fee_agree" value="yes" required class="bid-form__input bid-form__input--checkbox">
+            <label for="fee-agree" class="bid-form__label">Я согласен с комиссией площадки 1,5%</label>
         </p>
 
-        <p>
-            <button type="submit">Отправить ставку</button>
-            <button type="reset">Очистить форму</button>
+        <p class="bid-form__text">
+            <button type="submit" class="bid-form__button">Отправить ставку</button>
+            <button type="reset" class="bid-form__button bid-form__button--secondary">Очистить форму</button>
         </p>
     </form>
 </main>
 
-<footer>
-    <p>&copy; 2026 ArtChain. Все права защищены.</p>
-    <p>Связь: <a href="mailto:support@artchain.example">support@artchain.example</a></p>
+<footer class="page__footer footer">
+    <p class="footer__text">&copy; 2026 ArtChain. Все права защищены.</p>
+    <p class="footer__text">Связь: <a href="mailto:support@artchain.example" class="footer__link">support@artchain.example</a></p>
 </footer>
 
 </body>

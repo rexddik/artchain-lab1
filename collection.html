@@ -4,94 +4,95 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Мой крипто-кошелёк — ArtChain</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="page">
 
-<header>
-    <h1>ArtChain</h1>
-    <p>Маркетплейс цифрового искусства и NFT-токенов</p>
+<header class="page__header header">
+    <h1 class="header__title">ArtChain</h1>
+    <p class="header__text">Маркетплейс цифрового искусства и NFT-токенов</p>
 </header>
 
-<nav>
-    <ul>
-        <li><a href="index.html">Главная</a></li>
-        <li><a href="catalog.html">Каталог работ</a></li>
-        <li><a href="detail.html">Карточка работы</a></li>
-        <li><a href="collection.html">Мой кошелёк</a></li>
-        <li><a href="checkout.html">Сделать ставку</a></li>
+<nav class="page__menu menu">
+    <ul class="menu__list">
+        <li class="menu__item"><a href="index.html" class="menu__link">Главная</a></li>
+        <li class="menu__item"><a href="catalog.html" class="menu__link">Каталог работ</a></li>
+        <li class="menu__item"><a href="detail.html" class="menu__link">Карточка работы</a></li>
+        <li class="menu__item"><a href="collection.html" aria-current="page" class="menu__link menu__link--active">Мой кошелёк</a></li>
+        <li class="menu__item"><a href="checkout.html" class="menu__link">Сделать ставку</a></li>
     </ul>
 </nav>
 
-<main>
-    <h2>Мой крипто-кошелёк</h2>
-    <p>
+<main class="page__content content">
+    <h2 class="content__title">Мой крипто-кошелёк</h2>
+    <p class="content__text">
         Приобретённые токены с группировкой по сети блокчейна.
         Для каждой сети указана суммарная стоимость покупок.
     </p>
 
-    <table>
-        <caption>Приобретённые токены</caption>
+    <table class="content__table wallet">
+        <caption class="wallet__caption">Приобретённые токены</caption>
 
-        <thead>
-            <tr>
-                <th scope="col">Сеть блокчейна</th>
-                <th scope="col">Название работы</th>
-                <th scope="col">Автор</th>
-                <th scope="col">Стоимость покупки</th>
+        <thead class="wallet__head">
+            <tr class="wallet__row">
+                <th scope="col" class="wallet__heading">Сеть блокчейна</th>
+                <th scope="col" class="wallet__heading">Название работы</th>
+                <th scope="col" class="wallet__heading">Автор</th>
+                <th scope="col" class="wallet__heading">Стоимость покупки</th>
             </tr>
         </thead>
 
-        <tbody>
-            <!-- Ethereum: 2 работы -->
-            <tr>
-                <th scope="rowgroup" rowspan="2">Ethereum</th>
-                <td>«Цифровой закат»</td>
-                <td>Алиса Морозова</td>
-                <td>0.25 ETH</td>
+        <tbody class="wallet__body">
+            
+            <tr class="wallet__row">
+                <th scope="rowgroup" rowspan="2" class="wallet__heading">Ethereum</th>
+                <td class="wallet__cell">«Цифровой закат»</td>
+                <td class="wallet__cell">Алиса Морозова</td>
+                <td class="wallet__cell">0.25 ETH</td>
             </tr>
-            <tr>
-                <td>«Пиксельный океан»</td>
-                <td>Дмитрий Волков</td>
-                <td>0.30 ETH</td>
-            </tr>
-
-            <!-- Polygon: 2 работы -->
-            <tr>
-                <th scope="rowgroup" rowspan="2">Polygon</th>
-                <td>«Неоновый город»</td>
-                <td>Игорь Соколов</td>
-                <td>0.12 ETH</td>
-            </tr>
-            <tr>
-                <td>«Абстракция №7»</td>
-                <td>Ольга Кузнецова</td>
-                <td>0.05 ETH</td>
+            <tr class="wallet__row">
+                <td class="wallet__cell">«Пиксельный океан»</td>
+                <td class="wallet__cell">Дмитрий Волков</td>
+                <td class="wallet__cell">0.30 ETH</td>
             </tr>
 
-            <!-- Solana: 1 работа -->
-            <tr>
-                <th scope="rowgroup" rowspan="1">Solana</th>
-                <td>«Фрактальный лес»</td>
-                <td>Мария Лебедева</td>
-                <td>0.08 SOL</td>
+            
+            <tr class="wallet__row">
+                <th scope="rowgroup" rowspan="2" class="wallet__heading">Polygon</th>
+                <td class="wallet__cell">«Неоновый город»</td>
+                <td class="wallet__cell">Игорь Соколов</td>
+                <td class="wallet__cell">0.12 ETH</td>
+            </tr>
+            <tr class="wallet__row">
+                <td class="wallet__cell">«Абстракция №7»</td>
+                <td class="wallet__cell">Ольга Кузнецова</td>
+                <td class="wallet__cell">0.05 ETH</td>
+            </tr>
+
+            
+            <tr class="wallet__row">
+                <th scope="rowgroup" rowspan="1" class="wallet__heading">Solana</th>
+                <td class="wallet__cell">«Фрактальный лес»</td>
+                <td class="wallet__cell">Мария Лебедева</td>
+                <td class="wallet__cell">0.08 SOL</td>
             </tr>
         </tbody>
 
-        <tfoot>
-            <tr>
-                <td colspan="3">Итого по кошельку (в пересчёте на ETH):</td>
-                <td>0.80 ETH</td>
+        <tfoot class="wallet__foot">
+            <tr class="wallet__row">
+                <td colspan="3" class="wallet__cell">Итого по кошельку (в пересчёте на ETH):</td>
+                <td class="wallet__cell">0.80 ETH</td>
             </tr>
-            <tr>
-                <td colspan="4">Комиссия площадки 1,5% — 0.012 ETH</td>
+            <tr class="wallet__row">
+                <td colspan="4" class="wallet__cell">Комиссия площадки 1,5% — 0.012 ETH</td>
             </tr>
         </tfoot>
     </table>
 </main>
 
-<footer>
-    <p>&copy; 2026 ArtChain. Все права защищены.</p>
-    <p>Связь: <a href="mailto:support@artchain.example">support@artchain.example</a></p>
+<footer class="page__footer footer">
+    <p class="footer__text">&copy; 2026 ArtChain. Все права защищены.</p>
+    <p class="footer__text">Связь: <a href="mailto:support@artchain.example" class="footer__link">support@artchain.example</a></p>
 </footer>
 
 </body>

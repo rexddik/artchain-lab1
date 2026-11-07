@@ -4,68 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ArtChain — Маркетплейс цифрового искусства</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="page">
 
-<header>
-    <h1>ArtChain</h1>
-    <p>Маркетплейс цифрового искусства и NFT-токенов</p>
+<header class="page__header header">
+    <h1 class="header__title">ArtChain</h1>
+    <p class="header__text">Маркетплейс цифрового искусства и NFT-токенов</p>
 </header>
 
-<nav>
-    <ul>
-        <li><a href="index.html">Главная</a></li>
-        <li><a href="catalog.html">Каталог работ</a></li>
-        <li><a href="detail.html">Карточка работы</a></li>
-        <li><a href="collection.html">Мой кошелёк</a></li>
-        <li><a href="checkout.html">Сделать ставку</a></li>
+<nav class="page__menu menu">
+    <ul class="menu__list">
+        <li class="menu__item"><a href="index.html" aria-current="page" class="menu__link menu__link--active">Главная</a></li>
+        <li class="menu__item"><a href="catalog.html" class="menu__link">Каталог работ</a></li>
+        <li class="menu__item"><a href="detail.html" class="menu__link">Карточка работы</a></li>
+        <li class="menu__item"><a href="collection.html" class="menu__link">Мой кошелёк</a></li>
+        <li class="menu__item"><a href="checkout.html" class="menu__link">Сделать ставку</a></li>
     </ul>
 </nav>
 
-<main>
-    <section>
-        <h2>Добро пожаловать в ArtChain</h2>
-        <p>
+<main class="page__content content">
+    <section class="content__section section">
+        <h2 class="section__title">Добро пожаловать в ArtChain</h2>
+        <p class="section__text">
             ArtChain — платформа для коллекционеров и авторов цифрового искусства.
             Здесь можно покупать уникальные NFT-токены, делать ставки на аукционах
             и собирать собственную коллекцию.
         </p>
-        <p>
+        <p class="section__text">
             Работы хранятся в распределённом реестре, каждая транзакция фиксируется
             в блокчейне. Поддерживаются сети Ethereum, Polygon и Solana.
         </p>
     </section>
 
-    <section>
-        <h2>Как это работает</h2>
-        <ol>
-            <li>Зарегистрируйтесь и подключите крипто-кошелёк.</li>
-            <li>Выберите работу в каталоге и изучите её характеристики.</li>
-            <li>Сделайте ставку или купите токен по фиксированной цене.</li>
-            <li>Токен зачисляется в кошелёк и отображается в коллекции.</li>
+    <section class="content__section section">
+        <h2 class="section__title">Как это работает</h2>
+        <ol class="section__list">
+            <li class="section__item">Зарегистрируйтесь и подключите крипто-кошелёк.</li>
+            <li class="section__item">Выберите работу в каталоге и изучите её характеристики.</li>
+            <li class="section__item">Сделайте ставку или купите токен по фиксированной цене.</li>
+            <li class="section__item">Токен зачисляется в кошелёк и отображается в коллекции.</li>
         </ol>
     </section>
 
-    <section>
-        <h2>Разделы сайта</h2>
-        <ul>
-            <li><a href="catalog.html">Каталог цифровых работ</a></li>
-            <li><a href="collection.html">Мой крипто-кошелёк</a></li>
-            <li><a href="checkout.html">Создание ставки</a></li>
+    <section class="content__section section">
+        <h2 class="section__title">Разделы сайта</h2>
+        <ul class="section__list">
+            <li class="section__item"><a href="catalog.html" class="section__link">Каталог цифровых работ</a></li>
+            <li class="section__item"><a href="collection.html" class="section__link">Мой крипто-кошелёк</a></li>
+            <li class="section__item"><a href="checkout.html" class="section__link">Создание ставки</a></li>
         </ul>
     </section>
 
-    <aside>
-        <h2>Объявление</h2>
-        <p>
+    <aside class="content__notice notice">
+        <h2 class="notice__title">Объявление</h2>
+        <p class="notice__text">
             С 1 по 15 число каждого месяца комиссия площадки снижена до 1,5%.
         </p>
     </aside>
 </main>
 
-<footer>
-    <p>&copy; 2026 ArtChain. Все права защищены.</p>
-    <p>Связь: <a href="mailto:support@artchain.example">support@artchain.example</a></p>
+<footer class="page__footer footer">
+    <p class="footer__text">&copy; 2026 ArtChain. Все права защищены.</p>
+    <p class="footer__text">Связь: <a href="mailto:support@artchain.example" class="footer__link">support@artchain.example</a></p>
 </footer>
 
 </body>

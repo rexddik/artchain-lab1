@@ -4,72 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Каталог работ — ArtChain</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="page">
 
-<header>
-    <h1>ArtChain</h1>
-    <p>Маркетплейс цифрового искусства и NFT-токенов</p>
+<header class="page__header header">
+    <h1 class="header__title">ArtChain</h1>
+    <p class="header__text">Маркетплейс цифрового искусства и NFT-токенов</p>
 </header>
 
-<nav>
-    <ul>
-        <li><a href="index.html">Главная</a></li>
-        <li><a href="catalog.html">Каталог работ</a></li>
-        <li><a href="detail.html">Карточка работы</a></li>
-        <li><a href="collection.html">Мой кошелёк</a></li>
-        <li><a href="checkout.html">Сделать ставку</a></li>
+<nav class="page__menu menu">
+    <ul class="menu__list">
+        <li class="menu__item"><a href="index.html" class="menu__link">Главная</a></li>
+        <li class="menu__item"><a href="catalog.html" aria-current="page" class="menu__link menu__link--active">Каталог работ</a></li>
+        <li class="menu__item"><a href="detail.html" class="menu__link">Карточка работы</a></li>
+        <li class="menu__item"><a href="collection.html" class="menu__link">Мой кошелёк</a></li>
+        <li class="menu__item"><a href="checkout.html" class="menu__link">Сделать ставку</a></li>
     </ul>
 </nav>
 
-<main>
-    <h2>Каталог цифровых работ</h2>
-    <p>Работы, выставленные на продажу и аукционы.</p>
+<main class="page__content content">
+    <h2 class="content__title">Каталог цифровых работ</h2>
+    <p class="content__text">Работы, выставленные на продажу и аукционы.</p>
 
-    <section>
-        <h2>Живопись и графика</h2>
+    <section class="content__section section">
+        <h2 class="section__title">Живопись и графика</h2>
 
-        <article>
-            <h3>«Цифровой закат»</h3>
-            <p>Автор: <strong>Алиса Морозова</strong></p>
-            <p>Сеть блокчейна: Ethereum</p>
-            <p>Стартовая цена: 0.25 ETH</p>
-            <p><a href="detail.html">Подробнее о работе</a></p>
+        <article class="section__card card">
+            <div class="card__media">
+                <img class="card__image" src="images/digital-sunset.svg" alt="Цифровой закат" width="640" height="360">
+                <img class="card__network" src="images/ethereum.svg" alt="Сеть Ethereum" width="36" height="36">
+            </div>
+
+            <h3 class="card__title">«Цифровой закат»</h3>
+            <p class="card__text">Автор: <strong class="card__emphasis">Алиса Морозова</strong></p>
+            <p class="card__text">Сеть блокчейна: Ethereum</p>
+            <p class="card__text">Стартовая цена: 0.25 ETH</p>
+            <p class="card__text"><a href="detail.html" class="card__link">Подробнее о работе</a></p>
         </article>
 
-        <article>
-            <h3>«Неоновый город»</h3>
-            <p>Автор: <strong>Игорь Соколов</strong></p>
-            <p>Сеть блокчейна: Polygon</p>
-            <p>Стартовая цена: 0.12 ETH</p>
-            <p><a href="detail.html">Подробнее о работе</a></p>
+        <article class="section__card card">
+            <div class="card__media">
+                <img class="card__image" src="images/neon-city.svg" alt="Неоновый город" width="640" height="360">
+                <img class="card__network" src="images/polygon.svg" alt="Сеть Polygon" width="36" height="36">
+            </div>
+
+            <h3 class="card__title">«Неоновый город»</h3>
+            <p class="card__text">Автор: <strong class="card__emphasis">Игорь Соколов</strong></p>
+            <p class="card__text">Сеть блокчейна: Polygon</p>
+            <p class="card__text">Стартовая цена: 0.12 ETH</p>
+            <p class="card__text"><a href="detail.html" class="card__link">Подробнее о работе</a></p>
         </article>
     </section>
 
-    <section>
-        <h2>Генеративное искусство</h2>
+    <section class="content__section section">
+        <h2 class="section__title">Генеративное искусство</h2>
 
-        <article>
-            <h3>«Фрактальный лес»</h3>
-            <p>Автор: <strong>Мария Лебедева</strong></p>
-            <p>Сеть блокчейна: Solana</p>
-            <p>Стартовая цена: 0.08 SOL</p>
-            <p><a href="detail.html">Подробнее о работе</a></p>
+        <article class="section__card card">
+            <div class="card__media">
+                <img class="card__image" src="images/fractal-forest.svg" alt="Фрактальный лес" width="640" height="360">
+                <img class="card__network" src="images/solana.svg" alt="Сеть Solana" width="36" height="36">
+            </div>
+
+            <h3 class="card__title">«Фрактальный лес»</h3>
+            <p class="card__text">Автор: <strong class="card__emphasis">Мария Лебедева</strong></p>
+            <p class="card__text">Сеть блокчейна: Solana</p>
+            <p class="card__text">Стартовая цена: 0.08 SOL</p>
+            <p class="card__text"><a href="detail.html" class="card__link">Подробнее о работе</a></p>
         </article>
 
-        <article>
-            <h3>«Пиксельный океан»</h3>
-            <p>Автор: <strong>Дмитрий Волков</strong></p>
-            <p>Сеть блокчейна: Ethereum</p>
-            <p>Стартовая цена: 0.30 ETH</p>
-            <p><a href="detail.html">Подробнее о работе</a></p>
+        <article class="section__card card">
+            <div class="card__media">
+                <img class="card__image" src="images/pixel-ocean.svg" alt="Пиксельный океан" width="640" height="360">
+                <img class="card__network" src="images/ethereum.svg" alt="Сеть Ethereum" width="36" height="36">
+            </div>
+
+            <h3 class="card__title">«Пиксельный океан»</h3>
+            <p class="card__text">Автор: <strong class="card__emphasis">Дмитрий Волков</strong></p>
+            <p class="card__text">Сеть блокчейна: Ethereum</p>
+            <p class="card__text">Стартовая цена: 0.30 ETH</p>
+            <p class="card__text"><a href="detail.html" class="card__link">Подробнее о работе</a></p>
         </article>
     </section>
 </main>
 
-<footer>
-    <p>&copy; 2026 ArtChain. Все права защищены.</p>
-    <p>Связь: <a href="mailto:support@artchain.example">support@artchain.example</a></p>
+<footer class="page__footer footer">
+    <p class="footer__text">&copy; 2026 ArtChain. Все права защищены.</p>
+    <p class="footer__text">Связь: <a href="mailto:support@artchain.example" class="footer__link">support@artchain.example</a></p>
 </footer>
 
 </body>

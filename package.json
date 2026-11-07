@@ -1,0 +1,12 @@
+{
+  "name": "artchain-lab2",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:css": "sass --no-source-map scss/style.scss css/style.css",
+    "watch:css": "sass --watch --no-source-map scss/style.scss:css/style.css"
+  },
+  "devDependencies": {
+    "sass": "^1.108.1"
+  }
+}

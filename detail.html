@@ -4,70 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>«Цифровой закат» — ArtChain</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="page page--auction">
 
-<header>
-    <h1>ArtChain</h1>
-    <p>Маркетплейс цифрового искусства и NFT-токенов</p>
+<header class="page__header header">
+    <h1 class="header__title">ArtChain</h1>
+    <p class="header__text">Маркетплейс цифрового искусства и NFT-токенов</p>
 </header>
 
-<nav>
-    <ul>
-        <li><a href="index.html">Главная</a></li>
-        <li><a href="catalog.html">Каталог работ</a></li>
-        <li><a href="detail.html">Карточка работы</a></li>
-        <li><a href="collection.html">Мой кошелёк</a></li>
-        <li><a href="checkout.html">Сделать ставку</a></li>
+<nav class="page__menu menu">
+    <ul class="menu__list">
+        <li class="menu__item"><a href="index.html" class="menu__link">Главная</a></li>
+        <li class="menu__item"><a href="catalog.html" class="menu__link">Каталог работ</a></li>
+        <li class="menu__item"><a href="detail.html" aria-current="page" class="menu__link menu__link--active">Карточка работы</a></li>
+        <li class="menu__item"><a href="collection.html" class="menu__link">Мой кошелёк</a></li>
+        <li class="menu__item"><a href="checkout.html" class="menu__link">Сделать ставку</a></li>
     </ul>
 </nav>
 
-<main>
-    <article>
-        <h2>«Цифровой закат»</h2>
+<main class="page__content content">
+    <article class="content__card card">
+            <div class="card__media">
+                <img class="card__image" src="images/digital-sunset.svg" alt="Цифровой закат" width="640" height="360">
+                <img class="card__network" src="images/ethereum.svg" alt="Сеть Ethereum" width="36" height="36">
+            </div>
 
-        <section>
-            <h3>Описание</h3>
-            <p>
+        <h2 class="card__title">«Цифровой закат»</h2>
+
+        <section class="card__section section">
+            <h3 class="section__title">Описание</h3>
+            <p class="section__text">
                 Стилизованный цифровой пейзаж в технике векторной живописи.
                 Композиция построена на контрасте тёплых и холодных оттенков.
                 Работа создана в 2024 году и переведена в токен стандарта ERC-721.
             </p>
         </section>
 
-        <section>
-            <h3>Характеристики</h3>
-            <ul>
-                <li>Автор: Алиса Морозова</li>
-                <li>Год создания: 2024</li>
-                <li>Сеть блокчейна: Ethereum</li>
-                <li>Стандарт токена: ERC-721</li>
-                <li>Разрешение: 4096 × 2731 px</li>
-                <li>Текущая цена: 0.25 ETH</li>
+        <section class="card__section section">
+            <h3 class="section__title">Характеристики</h3>
+            <ul class="section__list">
+                <li class="section__item">Автор: Алиса Морозова</li>
+                <li class="section__item">Год создания: 2024</li>
+                <li class="section__item">Сеть блокчейна: Ethereum</li>
+                <li class="section__item">Стандарт токена: ERC-721</li>
+                <li class="section__item">Разрешение: 4096 × 2731 px</li>
+                <li class="section__item">Текущая цена: 0.25 ETH</li>
             </ul>
         </section>
 
-        <section>
-            <h3>Связанная графика</h3>
-            <figure>
-                <img src="images/digital-sunset-sketch.jpg"
-                     alt="Эскиз работы «Цифровой закат»: карандашный набросок с горами и солнцем"
-                     width="400">
-                <figcaption>Эскиз к работе</figcaption>
+        <section class="card__section section">
+            <h3 class="section__title">Связанная графика</h3>
+            <figure class="section__figure">
+                <img src="images/digital-sunset-sketch.svg" alt="Эскиз работы «Цифровой закат»: карандашный набросок с горами и солнцем" width="400" class="section__image">
+                <figcaption class="section__caption">Эскиз к работе</figcaption>
             </figure>
         </section>
     </article>
 
-    <aside>
-        <h2>История ставок</h2>
-        <p>Последняя ставка: 0.24 ETH (2 часа назад).</p>
-        <p><a href="checkout.html">Сделать ставку на эту работу</a></p>
+    <aside class="page__bid-panel bid-panel">
+        <h2 class="bid-panel__title">Текущая максимальная ставка</h2>
+        <p class="bid-panel__text">0.24 ETH</p>
+        <p class="bid-panel__text"><a href="checkout.html" class="bid-panel__link">Сделать ставку на эту работу</a></p>
     </aside>
 </main>
 
-<footer>
-    <p>&copy; 2026 ArtChain. Все права защищены.</p>
-    <p>Связь: <a href="mailto:support@artchain.example">support@artchain.example</a></p>
+<footer class="page__footer footer">
+    <p class="footer__text">&copy; 2026 ArtChain. Все права защищены.</p>
+    <p class="footer__text">Связь: <a href="mailto:support@artchain.example" class="footer__link">support@artchain.example</a></p>
 </footer>
 
 </body>
