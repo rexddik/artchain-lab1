@@ -6,14 +6,15 @@
     <title>ArtChain — Маркетплейс цифрового искусства</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
-<body class="page">
+<body class="page page--with-sidebar">
+<a class="page__skip-link" href="#main-content">Перейти к содержимому</a>
 
 <header class="page__header header">
     <h1 class="header__title">ArtChain</h1>
     <p class="header__text">Маркетплейс цифрового искусства и NFT-токенов</p>
 </header>
 
-<nav class="page__menu menu">
+<nav class="page__menu menu" aria-label="Основная навигация">
     <ul class="menu__list">
         <li class="menu__item"><a href="index.html" aria-current="page" class="menu__link menu__link--active">Главная</a></li>
         <li class="menu__item"><a href="catalog.html" class="menu__link">Каталог работ</a></li>
@@ -23,7 +24,7 @@
     </ul>
 </nav>
 
-<main class="page__content content">
+<main class="page__content content" id="main-content" tabindex="-1">
     <section class="content__section section">
         <h2 class="section__title">Добро пожаловать в ArtChain</h2>
         <p class="section__text">
@@ -56,13 +57,15 @@
         </ul>
     </section>
 
-    <aside class="content__notice notice">
+
+</main>
+
+    <aside class="page__sidebar notice">
         <h2 class="notice__title">Объявление</h2>
         <p class="notice__text">
             С 1 по 15 число каждого месяца комиссия площадки снижена до 1,5%.
         </p>
     </aside>
-</main>
 
 <footer class="page__footer footer">
     <p class="footer__text">&copy; 2026 ArtChain. Все права защищены.</p>

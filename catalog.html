@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="page">
+<a class="page__skip-link" href="#main-content">Перейти к содержимому</a>
 
 <header class="page__header header">
     <h1 class="header__title">ArtChain</h1>
     <p class="header__text">Маркетплейс цифрового искусства и NFT-токенов</p>
 </header>
 
-<nav class="page__menu menu">
+<nav class="page__menu menu" aria-label="Основная навигация">
     <ul class="menu__list">
         <li class="menu__item"><a href="index.html" class="menu__link">Главная</a></li>
         <li class="menu__item"><a href="catalog.html" aria-current="page" class="menu__link menu__link--active">Каталог работ</a></li>
@@ -23,12 +24,13 @@
     </ul>
 </nav>
 
-<main class="page__content content">
+<main class="page__content content" id="main-content" tabindex="-1">
     <h2 class="content__title">Каталог цифровых работ</h2>
     <p class="content__text">Работы, выставленные на продажу и аукционы.</p>
 
     <section class="content__section section">
         <h2 class="section__title">Живопись и графика</h2>
+        <div class="section__gallery">
 
         <article class="section__card card">
             <div class="card__media">
@@ -37,7 +39,13 @@
             </div>
 
             <h3 class="card__title">«Цифровой закат»</h3>
-            <p class="card__text">Автор: <strong class="card__emphasis">Алиса Морозова</strong></p>
+            <div class="card__summary">
+                <div class="card__author">
+                    <img class="card__avatar" src="images/avatar-alice.svg" alt="" width="48" height="48">
+                    <p class="card__text">Автор: <strong class="card__emphasis">Алиса Морозова</strong></p>
+                </div>
+                <p class="card__bid">Текущая ставка: <strong class="card__emphasis">0.24 ETH</strong></p>
+            </div>
             <p class="card__text">Сеть блокчейна: Ethereum</p>
             <p class="card__text">Стартовая цена: 0.25 ETH</p>
             <p class="card__text"><a href="detail.html" class="card__link">Подробнее о работе</a></p>
@@ -50,15 +58,23 @@
             </div>
 
             <h3 class="card__title">«Неоновый город»</h3>
-            <p class="card__text">Автор: <strong class="card__emphasis">Игорь Соколов</strong></p>
+            <div class="card__summary">
+                <div class="card__author">
+                    <img class="card__avatar" src="images/avatar-igor.svg" alt="" width="48" height="48">
+                    <p class="card__text">Автор: <strong class="card__emphasis">Игорь Соколов</strong></p>
+                </div>
+                <p class="card__bid">Текущая ставка: <strong class="card__emphasis">0.12 ETH</strong></p>
+            </div>
             <p class="card__text">Сеть блокчейна: Polygon</p>
             <p class="card__text">Стартовая цена: 0.12 ETH</p>
             <p class="card__text"><a href="detail.html" class="card__link">Подробнее о работе</a></p>
         </article>
+        </div>
     </section>
 
     <section class="content__section section">
         <h2 class="section__title">Генеративное искусство</h2>
+        <div class="section__gallery">
 
         <article class="section__card card">
             <div class="card__media">
@@ -67,7 +83,13 @@
             </div>
 
             <h3 class="card__title">«Фрактальный лес»</h3>
-            <p class="card__text">Автор: <strong class="card__emphasis">Мария Лебедева</strong></p>
+            <div class="card__summary">
+                <div class="card__author">
+                    <img class="card__avatar" src="images/avatar-maria.svg" alt="" width="48" height="48">
+                    <p class="card__text">Автор: <strong class="card__emphasis">Мария Лебедева</strong></p>
+                </div>
+                <p class="card__bid">Текущая ставка: <strong class="card__emphasis">0.08 SOL</strong></p>
+            </div>
             <p class="card__text">Сеть блокчейна: Solana</p>
             <p class="card__text">Стартовая цена: 0.08 SOL</p>
             <p class="card__text"><a href="detail.html" class="card__link">Подробнее о работе</a></p>
@@ -80,11 +102,18 @@
             </div>
 
             <h3 class="card__title">«Пиксельный океан»</h3>
-            <p class="card__text">Автор: <strong class="card__emphasis">Дмитрий Волков</strong></p>
+            <div class="card__summary">
+                <div class="card__author">
+                    <img class="card__avatar" src="images/avatar-dmitry.svg" alt="" width="48" height="48">
+                    <p class="card__text">Автор: <strong class="card__emphasis">Дмитрий Волков</strong></p>
+                </div>
+                <p class="card__bid">Текущая ставка: <strong class="card__emphasis">0.30 ETH</strong></p>
+            </div>
             <p class="card__text">Сеть блокчейна: Ethereum</p>
             <p class="card__text">Стартовая цена: 0.30 ETH</p>
             <p class="card__text"><a href="detail.html" class="card__link">Подробнее о работе</a></p>
         </article>
+        </div>
     </section>
 </main>
 

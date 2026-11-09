@@ -1,0 +1,167 @@
+@use 'variables' as v;
+
+// Mobile First: phone layout is the default.
+.page {
+  display: grid;
+  grid-template-columns: minmax(1rem, 1fr) minmax(0, 75rem) minmax(1rem, 1fr);
+  grid-template-areas:
+    ". header ."
+    ". menu ."
+    ". main ."
+    ". sidebar ."
+    ". footer .";
+  grid-template-rows: auto auto 1fr auto auto;
+  min-height: 100vh;
+  gap: v.$space 0;
+
+  &__header, &__menu, &__content, &__footer {
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    margin: 0;
+  }
+  &__header { grid-area: header; }
+  &__menu { grid-area: menu; }
+  &__content { grid-area: main; padding: 0; }
+  &__sidebar { grid-area: sidebar; min-width: 0; align-self: start; }
+  &__footer { grid-area: footer; overflow-wrap: anywhere; }
+  &__skip-link {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    z-index: 20;
+    padding: 10px 16px;
+    color: v.$surface;
+    background-color: v.$accent;
+    transform: translateY(-200%);
+    &:focus-visible {
+      transform: translateY(0);
+      outline: 3px solid v.$text;
+      outline-offset: 3px;
+    }
+  }
+  &--auction {
+    padding-bottom: 210px;
+    scroll-padding-bottom: 210px;
+  }
+}
+
+.menu {
+  &__list { display: flex; flex-direction: column; gap: 4px; }
+  &__item { margin: 0; min-width: 0; }
+  &__link { min-height: 44px; }
+}
+
+.section {
+  &__gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: v.$space;
+  }
+  &__card { margin: 0; }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 12px;
+  &__media { max-width: none; margin: 0; }
+  &__image {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+  &__title, &__text { margin: 0; }
+  &__summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  &__author { display: flex; align-items: center; gap: 8px; flex: 1 1 9rem; min-width: 0; }
+  &__avatar { display: block; width: 40px; height: 40px; flex-shrink: 0; border-radius: 50%; }
+  &__bid { margin: 0 0 0 auto; flex: 0 1 auto; text-align: right; }
+  &__section { margin: 0; }
+}
+
+.bid-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: v.$space;
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1 1 100%;
+    min-width: 0;
+    margin: 0;
+    &--choices { flex-direction: column; }
+    &--agreement { flex-direction: row; align-items: flex-start; }
+    &--actions { flex-direction: row; flex-wrap: wrap; }
+  }
+  &__choice { display: flex; align-items: center; gap: 8px; }
+  &__group { flex: 1 1 100%; min-width: 0; margin: 0; }
+  &__input { min-width: 0; }
+  &__input--radio, &__input--checkbox { flex-shrink: 0; }
+  &__button { margin: 0; min-height: 44px; }
+}
+
+.table-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  &:focus-visible { outline: 3px solid v.$accent; outline-offset: 3px; }
+}
+.wallet {
+  &__heading, &__cell { overflow-wrap: anywhere; }
+}
+.content:focus-visible { outline: 3px solid v.$accent; outline-offset: 3px; }
+.page--auction :focus-visible { scroll-margin-bottom: 210px; }
+
+// Tablet: horizontal navigation and two-column form fields.
+@media (min-width: 768px) {
+  .menu {
+    &__list { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+    &__item { flex: 1 1 auto; }
+    &__link { text-align: center; }
+  }
+  .bid-form {
+    &__text { flex-basis: calc(50% - 8px); }
+    &__text--choices { flex-direction: row; flex-wrap: wrap; }
+    &__text--agreement, &__text--actions { flex-basis: 100%; }
+  }
+  .bid-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    &__text { margin: 0; }
+  }
+}
+
+// Desktop: existing announcement becomes a sidebar.
+@media (min-width: 1200px) {
+  .page--with-sidebar {
+    grid-template-columns: minmax(1rem, 1fr) minmax(0, 52rem) minmax(0, 22rem) minmax(1rem, 1fr);
+    grid-template-areas:
+      ". header header ."
+      ". menu menu ."
+      ". main sidebar ."
+      ". footer footer .";
+    grid-template-rows: auto auto 1fr auto;
+    column-gap: v.$space;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    &__title { margin: 0; }
+    &__text { max-width: 65%; text-align: right; }
+  }
+}

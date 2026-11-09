@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="page">
+<a class="page__skip-link" href="#main-content">Перейти к содержимому</a>
 
 <header class="page__header header">
     <h1 class="header__title">ArtChain</h1>
     <p class="header__text">Маркетплейс цифрового искусства и NFT-токенов</p>
 </header>
 
-<nav class="page__menu menu">
+<nav class="page__menu menu" aria-label="Основная навигация">
     <ul class="menu__list">
         <li class="menu__item"><a href="index.html" class="menu__link">Главная</a></li>
         <li class="menu__item"><a href="catalog.html" class="menu__link">Каталог работ</a></li>
@@ -23,21 +24,21 @@
     </ul>
 </nav>
 
-<main class="page__content content">
+<main class="page__content content" id="main-content" tabindex="-1">
     <h2 class="content__title">Создание ставки</h2>
-    <p class="content__text">Ставка на работу «Цифровой закат». Все поля обязательны.</p>
+    <p class="content__text">Ставка на работу «Цифровой закат». Поля со звёздочкой обязательны.</p>
 
     <form action="/api/bids" method="post" class="content__form bid-form">
 
         
         <p class="bid-form__text">
-            <label for="bid-amount" class="bid-form__label">Сумма ставки:</label><br>
+            <label for="bid-amount" class="bid-form__label">Сумма ставки: *</label>
             <input type="number" id="bid-amount" name="bid_amount" min="0.01" max="100" step="0.01" placeholder="0.25" required class="bid-form__input">
         </p>
 
         
         <p class="bid-form__text">
-            <label for="bid-currency" class="bid-form__label">Валюта ставки:</label><br>
+            <label for="bid-currency" class="bid-form__label">Валюта ставки: *</label>
             <select id="bid-currency" name="bid_currency" required class="bid-form__input">
                 <option value="">— выберите валюту —</option>
                 <option value="ETH">ETH (Ethereum)</option>
@@ -49,47 +50,47 @@
 
         
         <p class="bid-form__text">
-            <label for="bid-expires" class="bid-form__label">Срок действия ставки:</label><br>
+            <label for="bid-expires" class="bid-form__label">Срок действия ставки: *</label>
             <input type="datetime-local" id="bid-expires" name="bid_expires" required class="bid-form__input">
         </p>
 
         
         <p class="bid-form__text">
-            <label for="bid-email" class="bid-form__label">Email для уведомлений:</label><br>
+            <label for="bid-email" class="bid-form__label">Email для уведомлений: *</label>
             <input type="email" id="bid-email" name="bid_email" placeholder="you@example.com" required class="bid-form__input">
         </p>
 
         
         <p class="bid-form__text">
-            <label for="wallet-id" class="bid-form__label">Идентификатор кошелька (0x + 40 hex):</label><br>
+            <label for="wallet-id" class="bid-form__label">Идентификатор кошелька (0x + 40 hex): *</label>
             <input type="text" id="wallet-id" name="wallet_id" pattern="^0x[a-fA-F0-9]{40}$" placeholder="0x0123abc...def" title="40 шестнадцатеричных символов после 0x" required class="bid-form__input">
         </p>
 
         
         <fieldset class="bid-form__group">
             <legend class="bid-form__legend">Тип ставки:</legend>
-            <p class="bid-form__text">
-                <input type="radio" id="bid-type-fixed" name="bid_type" value="fixed" checked class="bid-form__input bid-form__input--radio">
-                <label for="bid-type-fixed" class="bid-form__label">Фиксированная</label>
+            <p class="bid-form__text bid-form__text--choices">
+                <span class="bid-form__choice"><input type="radio" id="bid-type-fixed" name="bid_type" value="fixed" checked class="bid-form__input bid-form__input--radio">
+                <label for="bid-type-fixed" class="bid-form__label">Фиксированная</label></span>
 
-                <input type="radio" id="bid-type-auction" name="bid_type" value="auction" class="bid-form__input bid-form__input--radio">
-                <label for="bid-type-auction" class="bid-form__label">Аукционная</label>
+                <span class="bid-form__choice"><input type="radio" id="bid-type-auction" name="bid_type" value="auction" class="bid-form__input bid-form__input--radio">
+                <label for="bid-type-auction" class="bid-form__label">Аукционная</label></span>
             </p>
         </fieldset>
 
         
         <p class="bid-form__text">
-            <label for="bid-priority" class="bid-form__label">Приоритет ставки (1–5):</label><br>
+            <label for="bid-priority" class="bid-form__label">Приоритет ставки (1–5):</label>
             <input type="range" id="bid-priority" name="bid_priority" min="1" max="5" value="3" class="bid-form__input bid-form__input--range">
         </p>
 
         
-        <p class="bid-form__text">
+        <p class="bid-form__text bid-form__text--agreement">
             <input type="checkbox" id="fee-agree" name="fee_agree" value="yes" required class="bid-form__input bid-form__input--checkbox">
-            <label for="fee-agree" class="bid-form__label">Я согласен с комиссией площадки 1,5%</label>
+            <label for="fee-agree" class="bid-form__label">Я согласен с комиссией площадки 1,5% *</label>
         </p>
 
-        <p class="bid-form__text">
+        <p class="bid-form__text bid-form__text--actions">
             <button type="submit" class="bid-form__button">Отправить ставку</button>
             <button type="reset" class="bid-form__button bid-form__button--secondary">Очистить форму</button>
         </p>

@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="page page--auction">
+<a class="page__skip-link" href="#main-content">Перейти к содержимому</a>
 
 <header class="page__header header">
     <h1 class="header__title">ArtChain</h1>
     <p class="header__text">Маркетплейс цифрового искусства и NFT-токенов</p>
 </header>
 
-<nav class="page__menu menu">
+<nav class="page__menu menu" aria-label="Основная навигация">
     <ul class="menu__list">
         <li class="menu__item"><a href="index.html" class="menu__link">Главная</a></li>
         <li class="menu__item"><a href="catalog.html" class="menu__link">Каталог работ</a></li>
@@ -23,7 +24,7 @@
     </ul>
 </nav>
 
-<main class="page__content content">
+<main class="page__content content" id="main-content" tabindex="-1">
     <article class="content__card card">
             <div class="card__media">
                 <img class="card__image" src="images/digital-sunset.svg" alt="Цифровой закат" width="640" height="360">
@@ -31,6 +32,13 @@
             </div>
 
         <h2 class="card__title">«Цифровой закат»</h2>
+            <div class="card__summary">
+                <div class="card__author">
+                    <img class="card__avatar" src="images/avatar-alice.svg" alt="" width="48" height="48">
+                    <p class="card__text">Автор: <strong class="card__emphasis">Алиса Морозова</strong></p>
+                </div>
+                <p class="card__bid">Текущая ставка: <strong class="card__emphasis">0.24 ETH</strong></p>
+            </div>
 
         <section class="card__section section">
             <h3 class="section__title">Описание</h3>

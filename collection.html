@@ -7,13 +7,14 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="page">
+<a class="page__skip-link" href="#main-content">Перейти к содержимому</a>
 
 <header class="page__header header">
     <h1 class="header__title">ArtChain</h1>
     <p class="header__text">Маркетплейс цифрового искусства и NFT-токенов</p>
 </header>
 
-<nav class="page__menu menu">
+<nav class="page__menu menu" aria-label="Основная навигация">
     <ul class="menu__list">
         <li class="menu__item"><a href="index.html" class="menu__link">Главная</a></li>
         <li class="menu__item"><a href="catalog.html" class="menu__link">Каталог работ</a></li>
@@ -23,14 +24,15 @@
     </ul>
 </nav>
 
-<main class="page__content content">
+<main class="page__content content" id="main-content" tabindex="-1">
     <h2 class="content__title">Мой крипто-кошелёк</h2>
     <p class="content__text">
         Приобретённые токены с группировкой по сети блокчейна.
         Для каждой сети указана суммарная стоимость покупок.
     </p>
 
-    <table class="content__table wallet">
+    <div class="content__table table-scroll" role="region" aria-label="Приобретённые токены — таблицу можно прокручивать по горизонтали" tabindex="0">
+    <table class="wallet">
         <caption class="wallet__caption">Приобретённые токены</caption>
 
         <thead class="wallet__head">
@@ -88,6 +90,7 @@
             </tr>
         </tfoot>
     </table>
+    </div>
 </main>
 
 <footer class="page__footer footer">
