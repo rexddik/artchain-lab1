@@ -486,7 +486,9 @@ body {
   max-width: 100%;
   height: auto;
   aspect-ratio: 16/9;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
+  background-color: #ffffff;
 }
 .card__title, .card__text {
   margin: 0;
@@ -511,6 +513,7 @@ body {
   height: 40px;
   flex-shrink: 0;
   border-radius: 50%;
+  object-fit: cover;
 }
 .card__bid {
   margin: 0 0 0 auto;
@@ -641,4 +644,17 @@ body {
     max-width: 65%;
     text-align: right;
   }
+}
+
+.card__media {
+    position: relative;
+    padding-right: 48px;
+}
+
+.card__network {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 36px;
+    height: 36px;
 }
