@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Создание ставки — ArtChain</title>
+    <title>Публикация NFT — ArtChain</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/main.js" defer></script>
 </head>
@@ -21,81 +21,53 @@
         <li class="menu__item"><a href="catalog.html" class="menu__link">Каталог работ</a></li>
         <li class="menu__item"><a href="detail.html" class="menu__link">Карточка работы</a></li>
         <li class="menu__item"><a href="collection.html" class="menu__link">Мой кошелёк</a></li>
-        <li class="menu__item"><a href="checkout.html" aria-current="page" class="menu__link menu__link--active">Сделать ставку</a></li>
+        <li class="menu__item"><a href="checkout.html" aria-current="page" class="menu__link menu__link--active">Опубликовать NFT</a></li>
     </ul>
 </nav>
 
 <main class="page__content content" id="main-content" tabindex="-1">
-    <h2 class="content__title">Создание ставки</h2>
-    <p class="content__text">Ставка на работу «Котик Канючка». Поля со звёздочкой обязательны.</p>
-
-    <form action="/api/bids" method="post" class="content__form bid-form">
-
-        
+    <h2 class="content__title">Публикация собственного NFT</h2>
+    <p class="content__text">Заполните все поля. Работа появится в начале каталога. Данные сохраняются в этом браузере.</p>
+    <form id="publish-form" class="content__form bid-form">
         <p class="bid-form__text">
-            <label for="bid-amount" class="bid-form__label">Сумма ставки: *</label>
-            <input type="number" id="bid-amount" name="bid_amount" min="0.01" max="100" step="0.01" placeholder="0.12" required class="bid-form__input">
+            <label for="nft-title" class="bid-form__label">Название работы</label>
+            <input id="nft-title" name="title" maxlength="120" required class="bid-form__input">
         </p>
-
-        
         <p class="bid-form__text">
-            <label for="bid-currency" class="bid-form__label">Валюта ставки: *</label>
-            <select id="bid-currency" name="bid_currency" required class="bid-form__input">
-                <option value="">— выберите валюту —</option>
-                <option value="ETH">ETH (Ethereum)</option>
-                <option value="POL">POL (Polygon)</option>
-                <option value="SOL">SOL (Solana)</option>
-                <option value="USDT">USDT (Tether)</option>
+            <label for="nft-author" class="bid-form__label">Автор</label>
+            <input id="nft-author" name="author" maxlength="100" required class="bid-form__input">
+        </p>
+        <p class="bid-form__text">
+            <label for="nft-price" class="bid-form__label">Начальная цена в валюте выбранной сети</label>
+            <input type="number" id="nft-price" name="price" min="0.0001" step="0.0001" required class="bid-form__input">
+        </p>
+        <p class="bid-form__text">
+            <label for="nft-network" class="bid-form__label">Блокчейн-сеть</label>
+            <select id="nft-network" name="network" required class="bid-form__input">
+                <option value="Ethereum">Ethereum (ETH)</option>
+                <option value="Polygon">Polygon (POL)</option>
+                <option value="Solana">Solana (SOL)</option>
             </select>
         </p>
-
-        
         <p class="bid-form__text">
-            <label for="bid-expires" class="bid-form__label">Срок действия ставки: *</label>
-            <input type="datetime-local" id="bid-expires" name="bid_expires" required class="bid-form__input">
+            <label for="nft-image" class="bid-form__label">Ссылка на изображение или путь в проекте</label>
+            <input id="nft-image" name="image" placeholder="https://example.com/art.png или images/image 11.png" required class="bid-form__input">
         </p>
-
-        
         <p class="bid-form__text">
-            <label for="bid-email" class="bid-form__label">Email для уведомлений: *</label>
-            <input type="email" id="bid-email" name="bid_email" placeholder="you@example.com" required class="bid-form__input">
+            <label for="nft-category" class="bid-form__label">Категория</label>
+            <select id="nft-category" name="category" required class="bid-form__input">
+                <option>Живопись и графика</option>
+                <option>Генеративное искусство</option>
+            </select>
         </p>
-
-        
-        <p class="bid-form__text">
-            <label for="wallet-id" class="bid-form__label">Идентификатор кошелька (0x + 40 hex): *</label>
-            <input type="text" id="wallet-id" name="wallet_id" pattern="^0x[a-fA-F0-9]{40}$" placeholder="0x0123abc...def" title="40 шестнадцатеричных символов после 0x" required class="bid-form__input">
-        </p>
-
-        
-        <fieldset class="bid-form__group">
-            <legend class="bid-form__legend">Тип ставки:</legend>
-            <p class="bid-form__text bid-form__text--choices">
-                <span class="bid-form__choice"><input type="radio" id="bid-type-fixed" name="bid_type" value="fixed" checked class="bid-form__input bid-form__input--radio">
-                <label for="bid-type-fixed" class="bid-form__label">Фиксированная</label></span>
-
-                <span class="bid-form__choice"><input type="radio" id="bid-type-auction" name="bid_type" value="auction" class="bid-form__input bid-form__input--radio">
-                <label for="bid-type-auction" class="bid-form__label">Аукционная</label></span>
-            </p>
-        </fieldset>
-
-        
-        <p class="bid-form__text">
-            <label for="bid-priority" class="bid-form__label">Приоритет ставки (1–5):</label>
-            <input type="range" id="bid-priority" name="bid_priority" min="1" max="5" value="3" class="bid-form__input bid-form__input--range">
-        </p>
-
-        
-        <p class="bid-form__text bid-form__text--agreement">
-            <input type="checkbox" id="fee-agree" name="fee_agree" value="yes" required class="bid-form__input bid-form__input--checkbox">
-            <label for="fee-agree" class="bid-form__label">Я согласен с комиссией площадки 1,5% *</label>
-        </p>
-
         <p class="bid-form__text bid-form__text--actions">
-            <button type="submit" class="bid-form__button">Отправить ставку</button>
+            <button type="submit" class="bid-form__button">Опубликовать NFT</button>
             <button type="reset" class="bid-form__button bid-form__button--secondary">Очистить форму</button>
         </p>
     </form>
+    <p id="storage-status" role="status" aria-live="polite"></p>
+    <p id="publish-status" role="status" aria-live="polite"></p>
+    <p><a href="catalog.html" class="section__link">Перейти в каталог</a></p>
 </main>
 
 <footer class="page__footer footer">
@@ -105,3 +77,4 @@
 
 </body>
 </html>
+

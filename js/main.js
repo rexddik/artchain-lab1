@@ -1,5 +1,12 @@
 "use strict";
 
+// Локальные файлы могут иметь отдельное хранилище для каждой страницы.
+// При таком запуске форма и каталог работают в одном catalog.html.
+if (window.location.protocol === "file:" && /\/checkout\.html$/.test(window.location.pathname)) {
+  window.location.replace(new URL("catalog.html#publish", window.location.href).href);
+}
+
+
 const nftData = [
   {
     id: 1,
@@ -412,13 +419,19 @@ class NFT {
     link.setAttribute("href", "detail.html");
     linkWrapper.append(link);
 
+    const bidButton = createElement("button", "bid-form__button", "Сделать ставку");
+    bidButton.type = "button";
+    bidButton.dataset.action = "bid";
+    bidButton.disabled = !this.isAuction;
+
     card.append(
       media,
       title,
       summary,
       network,
       bids,
-      linkWrapper
+      linkWrapper,
+      bidButton
     );
 
     return card;
@@ -499,14 +512,92 @@ const printAnalytics = (data) => {
   );
 };
 
+const STORAGE_KEY = "artchain.tokens.v1";
+
+// Разрешены HTTP(S)-ссылки и относительные пути к изображениям проекта.
+const isImagePath = (value) => {
+  if (typeof value !== "string" || !value.trim()) return false;
+  try {
+    const url = new URL(value, window.location.href);
+    return ["http:", "https:"].includes(url.protocol)
+      || (window.location.protocol === "file:" && url.protocol === "file:");
+  } catch {
+    return false;
+  }
+};
+
+const isToken = (token) => token !== null && typeof token === "object"
+  && typeof token.id === "string" && token.id.length > 0
+  && typeof token.title === "string" && token.title.trim().length > 0
+  && token.author !== null && typeof token.author === "object"
+  && typeof token.author.name === "string" && token.author.name.trim().length > 0
+  && isImagePath(token.author.avatar)
+  && Object.hasOwn(networkInfo, token.network)
+  && Number.isFinite(token.price) && token.price > 0
+  && Number.isSafeInteger(token.bids) && token.bids >= 0
+  && typeof token.category === "string" && token.category.trim().length > 0
+  && isImagePath(token.image) && typeof token.isAuction === "boolean"
+  && Array.isArray(token.tags) && token.tags.every((tag) => typeof tag === "string");
+
+const defaultTokens = () => nftData.map((token) => ({
+  ...token,
+  id: String(token.id),
+  author: { ...token.author },
+  tags: [...token.tags]
+}));
+
+// Если браузер запретил хранение, приложение продолжает работать в памяти.
+let memoryTokens = null;
+let storageWarningShown = false;
+const warnTemporaryStorage = () => {
+  const notice = document.querySelector("#storage-status");
+  if (notice) notice.textContent = "Хранилище браузера недоступно. Изменения действуют только до обновления или закрытия этой страницы.";
+};
+
+const loadTokens = () => {
+  try {
+    if (storageWarningShown && memoryTokens) return memoryTokens;
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored === null) return memoryTokens ?? defaultTokens();
+    const data = JSON.parse(stored);
+    if (!Array.isArray(data) || !data.every(isToken)
+      || new Set(data.map((token) => token.id)).size !== data.length) {
+      throw new Error("Некорректный формат каталога");
+    }
+    memoryTokens = data;
+    return data;
+  } catch (error) {
+    console.warn("Не удалось прочитать сохранённый каталог:", error.message);
+    if (error.name !== "SyntaxError" && error.message !== "Некорректный формат каталога") warnTemporaryStorage();
+    return memoryTokens ?? defaultTokens();
+  }
+};
+
+const saveTokens = (data) => {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    memoryTokens = data;
+    return true;
+  } catch (error) {
+    console.warn("Не удалось сохранить каталог:", error.message);
+    memoryTokens = data;
+    warnTemporaryStorage();
+    if (!storageWarningShown) {
+      window.alert("Браузер не разрешил сохранить данные. Вы можете продолжать работу, но изменения исчезнут после обновления страницы.");
+      storageWarningShown = true;
+    }
+    return true;
+  }
+};
+
 // Генерация карточек только на странице каталога.
 const catalogContainer = document.querySelector(
   "#catalog-container"
 );
 
 if (catalogContainer) {
-  renderCatalog(nftData, catalogContainer);
-  printAnalytics(nftData);
+  renderCatalog(loadTokens(), catalogContainer);
+  printAnalytics(loadTokens());
 }
 
 // Замена логотипов также на статичной детальной странице.
@@ -517,5 +608,96 @@ document.querySelectorAll(".card__network").forEach((image) => {
 
   if (network) {
     image.setAttribute("src", networkInfo[network].logo);
+  }
+});
+
+// Один обработчик для всех существующих и будущих кнопок каталога.
+if (catalogContainer) {
+  catalogContainer.addEventListener("click", (event) => {
+    if (!(event.target instanceof Element)) return;
+    const button = event.target.closest('[data-action="bid"]');
+    if (!button || !catalogContainer.contains(button)) return;
+    const card = button.closest("[data-id]");
+    if (!card) return;
+
+    const data = loadTokens();
+    const token = data.find((item) => item.id === card.dataset.id);
+    if (!token || !token.isAuction) return;
+    const currency = networkInfo[token.network].currency;
+    const input = window.prompt(
+      `Ставка на «${token.title}». Текущая цена: ${token.price} ${currency}. Введите большую сумму (до 4 знаков после запятой):`
+    );
+    if (input === null) return;
+    const normalized = input.trim().replace(",", ".");
+    if (!/^\d+(?:\.\d{1,4})?$/.test(normalized)) {
+      window.alert("Введите положительное число: не более 4 знаков после запятой.");
+      return;
+    }
+    const amount = Number(normalized);
+    if (!Number.isFinite(amount) || amount <= token.price) {
+      window.alert(`Ставка должна быть больше ${token.price} ${currency}.`);
+      return;
+    }
+    token.price = amount;
+    token.bids += 1;
+    if (!saveTokens(data)) return;
+    renderCatalog(data, catalogContainer);
+    printAnalytics(data);
+    document.querySelector("#catalog-status").textContent =
+      `Ставка на «${token.title}» принята: ${amount} ${currency}.`;
+    // После перерисовки возвращаем фокус на кнопку той же карточки.
+    const updatedCard = [...catalogContainer.querySelectorAll("[data-id]")]
+      .find((item) => item.dataset.id === token.id);
+    updatedCard?.querySelector('[data-action="bid"]')?.focus();
+  });
+}
+
+const publishForm = document.querySelector("#publish-form");
+if (publishForm) {
+  const status = document.querySelector("#publish-status");
+  publishForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!publishForm.reportValidity()) return;
+    const fields = new FormData(publishForm);
+    const title = String(fields.get("title") || "").trim();
+    const author = String(fields.get("author") || "").trim();
+    const image = String(fields.get("image") || "").trim();
+    const price = Number(fields.get("price"));
+    const network = String(fields.get("network"));
+    if (!title || !author || !isImagePath(image) || !Number.isFinite(price)
+      || price <= 0 || !Object.hasOwn(networkInfo, network)) {
+      status.textContent = "Проверьте название, автора, ссылку на изображение, цену и сеть.";
+      return;
+    }
+    const token = {
+      id: globalThis.crypto?.randomUUID?.()
+        ?? `nft-${Date.now()}-${Math.random().toString(36).slice(2)}`,
+      title,
+      author: { name: author, avatar: "images/avatar-maria.svg" },
+      network,
+      price,
+      bids: 0,
+      category: String(fields.get("category")),
+      image,
+      isAuction: true,
+      tags: ["пользовательская работа"]
+    };
+    const data = loadTokens();
+    data.unshift(token); // Новый NFT находится в начале массива и каталога.
+    if (!saveTokens(data)) return;
+    publishForm.reset();
+    if (catalogContainer) {
+      renderCatalog(data, catalogContainer);
+      printAnalytics(data);
+    }
+    status.textContent = `NFT «${title}» опубликован. Работа находится в начале каталога.`;
+  });
+  publishForm.addEventListener("reset", () => { status.textContent = ""; });
+}
+
+// Обновление каталога, если данные изменены в другой вкладке.
+window.addEventListener("storage", (event) => {
+  if (catalogContainer && (event.key === STORAGE_KEY || event.key === null)) {
+    renderCatalog(loadTokens(), catalogContainer);
   }
 });

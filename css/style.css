@@ -658,3 +658,8 @@ body {
     width: 36px;
     height: 36px;
 }
+
+.card > .bid-form__button {
+  margin-top: auto;
+  width: 100%;
+}
