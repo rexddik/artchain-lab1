@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
 import { fileURLToPath } from "node:url";
 
 const apiProxy = {
@@ -10,6 +11,7 @@ const apiProxy = {
 };
 
 export default defineConfig({
+  plugins: [vue()],
   base: "./",
   server: { port: 5173, strictPort: true, proxy: apiProxy },
   preview: { port: 4173, strictPort: true, proxy: apiProxy },
@@ -22,3 +24,4 @@ export default defineConfig({
     }
   }
 });
+

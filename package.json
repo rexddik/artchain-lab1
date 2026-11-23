@@ -1,5 +1,5 @@
 {
-  "name": "artchain-lab6",
+  "name": "artchain-lab7",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -16,6 +16,10 @@
   "devDependencies": {
     "json-server": "0.17.4",
     "sass": "1.108.1",
-    "vite": "8.3.8"
+    "vite": "8.3.8",
+    "@vitejs/plugin-vue": "6.0.11"
+  },
+  "dependencies": {
+    "vue": "3.5.46"
   }
 }

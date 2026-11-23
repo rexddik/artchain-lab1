@@ -1,105 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мой крипто-кошелёк — ArtChain</title>
-    
-    
-    <script type="module" src="/src/main.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мой кошелёк — ArtChain</title>
+  <script type="module" src="/src/main.js"></script>
 </head>
-<body class="page">
-<a class="page__skip-link" href="#main-content">Перейти к содержимому</a>
-
-<header class="page__header header">
-    <h1 class="header__title">ArtChain</h1>
-    <p class="header__text">Маркетплейс цифрового искусства и NFT-токенов</p>
-</header>
-
-<nav class="page__menu menu" aria-label="Основная навигация">
-    <ul class="menu__list">
-        <li class="menu__item"><a href="index.html" class="menu__link">Главная</a></li>
-        <li class="menu__item"><a href="catalog.html" class="menu__link">Каталог работ</a></li>
-        <li class="menu__item"><a href="detail.html" class="menu__link">Карточка работы</a></li>
-        <li class="menu__item"><a href="collection.html" aria-current="page" class="menu__link menu__link--active">Мой кошелёк</a></li>
-        <li class="menu__item"><a href="checkout.html" class="menu__link">Сделать ставку</a></li>
-    </ul>
-</nav>
-
-<main class="page__content content" id="main-content" tabindex="-1">
-    <h2 class="content__title">Мой крипто-кошелёк</h2>
-    <p class="content__text">
-        Приобретённые токены с группировкой по сети блокчейна.
-        Для каждой сети указана суммарная стоимость покупок.
-    </p>
-
-    <div class="content__table table-scroll" role="region" aria-label="Приобретённые токены — таблицу можно прокручивать по горизонтали" tabindex="0">
-    <table class="wallet">
-        <caption class="wallet__caption">Приобретённые токены</caption>
-
-        <thead class="wallet__head">
-            <tr class="wallet__row">
-                <th scope="col" class="wallet__heading">Сеть блокчейна</th>
-                <th scope="col" class="wallet__heading">Название работы</th>
-                <th scope="col" class="wallet__heading">Автор</th>
-                <th scope="col" class="wallet__heading">Стоимость покупки</th>
-            </tr>
-        </thead>
-
-        <tbody class="wallet__body">
-            
-            <tr class="wallet__row">
-                <th scope="rowgroup" rowspan="2" class="wallet__heading">Ethereum</th>
-                <td class="wallet__cell">«Обь - важная шишка»</td>
-                <td class="wallet__cell">Анна Орловская</td>
-                <td class="wallet__cell">0.25 ETH</td>
-            </tr>
-            <tr class="wallet__row">
-                <td class="wallet__cell">«Мама Обь с сыном Канючкой»</td>
-                <td class="wallet__cell">Анна Орловская</td>
-                <td class="wallet__cell">0.30 ETH</td>
-            </tr>
-
-            
-            <tr class="wallet__row">
-                <th scope="rowgroup" rowspan="2" class="wallet__heading">Polygon</th>
-                <td class="wallet__cell">«Котик Канючка»</td>
-                <td class="wallet__cell">Дарья Штром</td>
-                <td class="wallet__cell">0.12 ETH</td>
-            </tr>
-            <tr class="wallet__row">
-                <td class="wallet__cell">«Мама с любимой дочкой»</td>
-                <td class="wallet__cell">Анна Орловская</td>
-                <td class="wallet__cell">0.05 ETH</td>
-            </tr>
-
-            
-            <tr class="wallet__row">
-                <th scope="rowgroup" rowspan="1" class="wallet__heading">Solana</th>
-                <td class="wallet__cell">«Братик Канючка и сестренка Погоныш»</td>
-                <td class="wallet__cell">Анна Орловская</td>
-                <td class="wallet__cell">0.08 SOL</td>
-            </tr>
-        </tbody>
-
-        <tfoot class="wallet__foot">
-            <tr class="wallet__row">
-                <td colspan="3" class="wallet__cell">Итого по кошельку (в пересчёте на ETH):</td>
-                <td class="wallet__cell">0.80 ETH</td>
-            </tr>
-            <tr class="wallet__row">
-                <td colspan="4" class="wallet__cell">Комиссия площадки 1,5% — 0.012 ETH</td>
-            </tr>
-        </tfoot>
-    </table>
-    </div>
-</main>
-
-<footer class="page__footer footer">
-    <p class="footer__text">&copy; 2026 ArtChain. Все права защищены.</p>
-    <p class="footer__text">Связь: <a href="mailto:support@artchain.example" class="footer__link">support@artchain.example</a></p>
-</footer>
-
+<body>
+  <div id="app"></div>
 </body>
 </html>
-

@@ -1,108 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог работ — ArtChain</title>
-    
-    
-    <script type="module" src="/src/main.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог работ — ArtChain</title>
+  <script type="module" src="/src/main.js"></script>
 </head>
-<body class="page">
-<a class="page__skip-link" href="#main-content">Перейти к содержимому</a>
-
-<header class="page__header header">
-    <h1 class="header__title">ArtChain</h1>
-    <p class="header__text">Маркетплейс цифрового искусства и NFT-токенов</p>
-</header>
-
-<nav class="page__menu menu" aria-label="Основная навигация">
-    <ul class="menu__list">
-        <li class="menu__item"><a href="index.html" class="menu__link">Главная</a></li>
-        <li class="menu__item"><a href="catalog.html" aria-current="page" class="menu__link menu__link--active">Каталог работ</a></li>
-        <li class="menu__item"><a href="detail.html" class="menu__link">Карточка работы</a></li>
-        <li class="menu__item"><a href="collection.html" class="menu__link">Мой кошелёк</a></li>
-        <li class="menu__item"><a href="checkout.html" class="menu__link">Сделать ставку</a></li>
-    </ul>
-</nav>
-
-<main class="page__content content" id="main-content" tabindex="-1">
-    <h2 class="content__title">Каталог цифровых работ</h2>
-    <p class="content__text">Работы, выставленные на продажу и аукционы.</p>
-
-    <p><a class="bid-form__button" href="#publish">Опубликовать NFT</a></p>
-
-    <p id="catalog-status" role="status" aria-live="polite"></p>
-    <div class="request-panel">
-      <p id="load-status" role="status" aria-live="polite"></p>
-      <button id="retry-load" type="button" class="bid-form__button bid-form__button--secondary" hidden>Повторить загрузку</button>
-    </div>
-    <div id="catalog-container" aria-busy="true"></div>
-    <dialog id="bid-dialog" aria-labelledby="bid-dialog-title">
-      <h2 id="bid-dialog-title">Сделать ставку</h2>
-      <form id="dialog-bid-form" class="bid-form" data-bid-form>
-  <p class="bid-form__text"><label for="dialog-bid-token" class="bid-form__label">NFT для ставки</label><select id="dialog-bid-token" name="nftId" required class="bid-form__input"></select></p>
-  <p class="bid-form__text"><label for="dialog-bid-name" class="bid-form__label">Ваше имя</label><input id="dialog-bid-name" name="bidder" required maxlength="100" class="bid-form__input"></p>
-  <p class="bid-form__text"><label for="dialog-bid-amount" class="bid-form__label">Сумма ставки в валюте сети NFT</label><input id="dialog-bid-amount" name="amount" type="number" min="0.0001" step="0.0001" required class="bid-form__input"></p>
-  <p class="bid-form__text" data-current-price></p>
-  <p class="bid-form__text bid-form__text--actions"><button type="submit" class="bid-form__button">Отправить ставку</button></p>
-  <p class="bid-form__text request-status" role="status" aria-live="polite" data-form-status></p>
-</form>
-      <button id="close-bid-dialog" type="button" class="bid-form__button bid-form__button--secondary">Закрыть</button>
-    </dialog>
-
-<section id="publish" class="content__section section">
-    <h2 class="section__title">Публикация собственного NFT</h2>
-    <p class="content__text">Заполните все поля. Работа появится в начале каталога. Работа сохраняется на сервере.</p>
-    <form id="publish-form" class="content__form bid-form">
-        <p class="bid-form__text">
-            <label for="nft-title" class="bid-form__label">Название работы</label>
-            <input id="nft-title" name="title" maxlength="120" required class="bid-form__input">
-        </p>
-        <p class="bid-form__text">
-            <label for="nft-author" class="bid-form__label">Автор</label>
-            <input id="nft-author" name="author" maxlength="100" required class="bid-form__input">
-        </p>
-        <p class="bid-form__text">
-            <label for="nft-price" class="bid-form__label">Начальная цена в валюте выбранной сети</label>
-            <input type="number" id="nft-price" name="price" min="0.0001" step="0.0001" required class="bid-form__input">
-        </p>
-        <p class="bid-form__text">
-            <label for="nft-network" class="bid-form__label">Блокчейн-сеть</label>
-            <select id="nft-network" name="network" required class="bid-form__input">
-                <option value="Ethereum">Ethereum (ETH)</option>
-                <option value="Polygon">Polygon (POL)</option>
-                <option value="Solana">Solana (SOL)</option>
-            </select>
-        </p>
-        <p class="bid-form__text">
-            <label for="nft-image" class="bid-form__label">Ссылка на изображение или путь в проекте</label>
-            <input id="nft-image" name="image" placeholder="https://example.com/art.png или images/image 11.png" required class="bid-form__input">
-        </p>
-        <p class="bid-form__text">
-            <label for="nft-category" class="bid-form__label">Категория</label>
-            <select id="nft-category" name="category" required class="bid-form__input">
-                <option>Живопись и графика</option>
-                <option>Генеративное искусство</option>
-            </select>
-        </p>
-        <p class="bid-form__text bid-form__text--actions">
-            <button type="submit" class="bid-form__button">Опубликовать NFT</button>
-            <button type="reset" class="bid-form__button bid-form__button--secondary">Очистить форму</button>
-        </p>
-    </form>
-    <p id="publish-status" role="status" aria-live="polite"></p>
-    <p><a href="#catalog-container" class="section__link">К началу каталога</a></p>
-
-</section>
-</main>
-
-<footer class="page__footer footer">
-    <p class="footer__text">&copy; 2026 ArtChain. Все права защищены.</p>
-    <p class="footer__text">Связь: <a href="mailto:support@artchain.example" class="footer__link">support@artchain.example</a></p>
-</footer>
-
+<body>
+  <div id="app"></div>
 </body>
 </html>
-
-

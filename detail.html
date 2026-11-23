@@ -1,43 +1,12 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>«Котик Канючка» — ArtChain</title>
-    
-    
-    <script type="module" src="/src/main.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Карточка NFT — ArtChain</title>
+  <script type="module" src="/src/main.js"></script>
 </head>
-<body class="page">
-<a class="page__skip-link" href="#main-content">Перейти к содержимому</a>
-
-<header class="page__header header">
-    <h1 class="header__title">ArtChain</h1>
-    <p class="header__text">Маркетплейс цифрового искусства и NFT-токенов</p>
-</header>
-
-<nav class="page__menu menu" aria-label="Основная навигация">
-    <ul class="menu__list">
-        <li class="menu__item"><a href="index.html" class="menu__link">Главная</a></li>
-        <li class="menu__item"><a href="catalog.html" class="menu__link">Каталог работ</a></li>
-        <li class="menu__item"><a href="detail.html" aria-current="page" class="menu__link menu__link--active">Карточка работы</a></li>
-        <li class="menu__item"><a href="collection.html" class="menu__link">Мой кошелёк</a></li>
-        <li class="menu__item"><a href="checkout.html" class="menu__link">Сделать ставку</a></li>
-    </ul>
-</nav>
-
-<main class="page__content content" id="main-content" tabindex="-1"><h2 class="content__title">Карточка NFT</h2>
-    <p id="load-status" role="status" aria-live="polite"></p>
-    <button id="retry-load" type="button" class="bid-form__button bid-form__button--secondary" hidden>Повторить загрузку</button>
-    <div id="detail-container"></div>
-    <p><a href="catalog.html" class="section__link">К каталогу</a></p>
-</main>
-
-<footer class="page__footer footer">
-    <p class="footer__text">&copy; 2026 ArtChain. Все права защищены.</p>
-    <p class="footer__text">Связь: <a href="mailto:support@artchain.example" class="footer__link">support@artchain.example</a></p>
-</footer>
-
+<body>
+  <div id="app"></div>
 </body>
 </html>
-
