@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>«Котик Канючка» — ArtChain</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/main.js" defer></script>
+    
+    
+    <script type="module" src="/src/main.js"></script>
 </head>
-<body class="page page--auction">
+<body class="page">
 <a class="page__skip-link" href="#main-content">Перейти к содержимому</a>
 
 <header class="page__header header">
@@ -25,53 +26,11 @@
     </ul>
 </nav>
 
-<main class="page__content content" id="main-content" tabindex="-1">
-    <article class="content__card card">
-            <div class="card__media">
-                <img class="card__image" src="images/image 2 (dasha).jpg" alt="Котик Канючка" width="640" height="360">
-                <img class="card__network" src="images/polygon.svg" alt="Сеть Polygon" width="36" height="36">
-            </div>
-
-        <h2 class="card__title">«Котик Канючка»</h2>
-            <div class="card__summary">
-                <div class="card__author">
-                    <img class="card__avatar" src="images/avatar-dasha.jpg" alt="" width="48" height="48">
-                    <p class="card__text">Автор: <strong class="card__emphasis">Дарья Штром</strong></p>
-                </div>
-                <p class="card__bid">Текущая ставка: <strong class="card__emphasis">0.12 POL</strong></p>
-            </div>
-
-        <section class="card__section section">
-            <h3 class="section__title">Описание</h3>
-            <p class="section__text">
-                Цифровая иллюстрация котика Канючки. Автор — Дарья Штром.
-            </p>
-        </section>
-
-        <section class="card__section section">
-            <h3 class="section__title">Характеристики</h3>
-            <ul class="section__list">
-                <li class="section__item">Автор: Дарья Штром</li>
-                <li class="section__item">Сеть блокчейна: Polygon</li>
-                <li class="section__item">Разрешение: 1138 × 901 px</li>
-                <li class="section__item">Текущая цена: 0.12 POL</li>
-            </ul>
-        </section>
-
-        <section class="card__section section">
-            <h3 class="section__title">Связанная графика</h3>
-            <figure class="section__figure">
-                <img src="images/image 7 (dasha).jpg" alt="Мама Обь и папа Ягодник — работа Дарьи Штром" width="400" class="section__image">
-                <figcaption class="section__caption">«Мама Обь и папа Ягодник» — другая работа Дарьи Штром</figcaption>
-            </figure>
-        </section>
-    </article>
-
-    <aside class="page__bid-panel bid-panel">
-        <h2 class="bid-panel__title">Текущая максимальная ставка</h2>
-        <p class="bid-panel__text">0.12 POL</p>
-        <p class="bid-panel__text"><a href="checkout.html" class="bid-panel__link">Сделать ставку на эту работу</a></p>
-    </aside>
+<main class="page__content content" id="main-content" tabindex="-1"><h2 class="content__title">Карточка NFT</h2>
+    <p id="load-status" role="status" aria-live="polite"></p>
+    <button id="retry-load" type="button" class="bid-form__button bid-form__button--secondary" hidden>Повторить загрузку</button>
+    <div id="detail-container"></div>
+    <p><a href="catalog.html" class="section__link">К каталогу</a></p>
 </main>
 
 <footer class="page__footer footer">
@@ -81,3 +40,4 @@
 
 </body>
 </html>
+

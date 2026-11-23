@@ -1,12 +1,21 @@
 {
-  "name": "artchain-lab2",
+  "name": "artchain-lab6",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
+  "engines": { "node": ">=22.12.0" },
   "scripts": {
-    "build:css": "sass --no-source-map scss/style.scss css/style.css",
-    "watch:css": "sass --watch --no-source-map scss/style.scss:css/style.css"
+    "dev": "node scripts/dev.mjs",
+    "dev:ui": "vite --host 127.0.0.1",
+    "server": "node server.cjs",
+    "build": "node scripts/prepare-assets.mjs && vite build",
+    "preview": "vite preview --host 127.0.0.1",
+    "test": "node --test tests/*.test.mjs"
   },
   "devDependencies": {
-    "sass": "^1.108.1"
+    "vite": "8.3.8",
+    "sass": "1.108.1",
+    "json-server": "0.17.4",
+    "jsdom": "26.1.0"
   }
 }

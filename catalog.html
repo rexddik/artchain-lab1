@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Каталог работ — ArtChain</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js/main.js" defer></script>
+    
+    
+    <script type="module" src="/src/main.js"></script>
 </head>
 <body class="page">
 <a class="page__skip-link" href="#main-content">Перейти к содержимому</a>
@@ -21,7 +22,7 @@
         <li class="menu__item"><a href="catalog.html" aria-current="page" class="menu__link menu__link--active">Каталог работ</a></li>
         <li class="menu__item"><a href="detail.html" class="menu__link">Карточка работы</a></li>
         <li class="menu__item"><a href="collection.html" class="menu__link">Мой кошелёк</a></li>
-        <li class="menu__item"><a href="#publish" class="menu__link">Опубликовать NFT</a></li>
+        <li class="menu__item"><a href="checkout.html" class="menu__link">Сделать ставку</a></li>
     </ul>
 </nav>
 
@@ -30,13 +31,29 @@
     <p class="content__text">Работы, выставленные на продажу и аукционы.</p>
 
     <p><a class="bid-form__button" href="#publish">Опубликовать NFT</a></p>
-    <p id="storage-status" role="status" aria-live="polite"></p>
+
     <p id="catalog-status" role="status" aria-live="polite"></p>
-    <div id="catalog-container"></div>
+    <div class="request-panel">
+      <p id="load-status" role="status" aria-live="polite"></p>
+      <button id="retry-load" type="button" class="bid-form__button bid-form__button--secondary" hidden>Повторить загрузку</button>
+    </div>
+    <div id="catalog-container" aria-busy="true"></div>
+    <dialog id="bid-dialog" aria-labelledby="bid-dialog-title">
+      <h2 id="bid-dialog-title">Сделать ставку</h2>
+      <form id="dialog-bid-form" class="bid-form" data-bid-form>
+  <p class="bid-form__text"><label for="dialog-bid-token" class="bid-form__label">NFT для ставки</label><select id="dialog-bid-token" name="nftId" required class="bid-form__input"></select></p>
+  <p class="bid-form__text"><label for="dialog-bid-name" class="bid-form__label">Ваше имя</label><input id="dialog-bid-name" name="bidder" required maxlength="100" class="bid-form__input"></p>
+  <p class="bid-form__text"><label for="dialog-bid-amount" class="bid-form__label">Сумма ставки в валюте сети NFT</label><input id="dialog-bid-amount" name="amount" type="number" min="0.0001" step="0.0001" required class="bid-form__input"></p>
+  <p class="bid-form__text" data-current-price></p>
+  <p class="bid-form__text bid-form__text--actions"><button type="submit" class="bid-form__button">Отправить ставку</button></p>
+  <p class="bid-form__text request-status" role="status" aria-live="polite" data-form-status></p>
+</form>
+      <button id="close-bid-dialog" type="button" class="bid-form__button bid-form__button--secondary">Закрыть</button>
+    </dialog>
 
 <section id="publish" class="content__section section">
     <h2 class="section__title">Публикация собственного NFT</h2>
-    <p class="content__text">Заполните все поля. Работа появится в начале каталога. Данные сохраняются в этом браузере.</p>
+    <p class="content__text">Заполните все поля. Работа появится в начале каталога. Работа сохраняется на сервере.</p>
     <form id="publish-form" class="content__form bid-form">
         <p class="bid-form__text">
             <label for="nft-title" class="bid-form__label">Название работы</label>
@@ -87,4 +104,5 @@
 
 </body>
 </html>
+
 

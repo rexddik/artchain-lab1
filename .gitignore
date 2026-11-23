@@ -1,2 +1,5 @@
 node_modules/
-.sass-cache/
+dist/
+public/images/
+*.log
+.DS_Store
