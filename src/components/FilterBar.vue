@@ -5,11 +5,16 @@ const props = defineProps({ modelValue: { type: Object, required: true } });
 const emit = defineEmits(['update:modelValue', 'reset']);
 const fields = reactive({ ...props.modelValue });
 watch(() => props.modelValue, value => Object.assign(fields, value), { deep: true });
-function update() { emit('update:modelValue', { ...fields }); }
+// Передаём изменения после обновления полей через v-model.
+watch(fields, value => {
+  if (Object.keys(value).some(key => value[key] !== props.modelValue[key])) {
+    emit('update:modelValue', { ...value });
+  }
+}, { deep: true, flush: 'post' });
 </script>
 
 <template>
-  <form class="filter-bar" role="search" @submit.prevent @input="update" @change="update">
+  <form class="filter-bar" role="search" @submit.prevent>
     <label>Поиск по названию или автору
       <input v-model.trim="fields.search" type="search" maxlength="120" class="bid-form__input" placeholder="Например, Канючка или Штром">
     </label>
