@@ -42,3 +42,4 @@ export const createNFT = (token) => request("/nfts", {
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify(token)
 });
+

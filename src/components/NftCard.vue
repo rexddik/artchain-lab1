@@ -13,9 +13,10 @@ const props = defineProps({
   isAuctionActive: { type: Boolean, required: true },
   imageUrl: { type: String, required: true },
   creatorAvatar: { type: String, default: 'images/avatar-maria.svg' },
-  busy: { type: Boolean, default: false }
+  busy: { type: Boolean, default: false },
+  watched: { type: Boolean, default: false }
 });
-defineEmits(['bid']);
+defineEmits(['place-bid', 'toggle-watchlist']);
 const logos = { Ethereum: 'images/logo/ethereum.png', Polygon: 'images/logo/polygon.png', Solana: 'images/logo/solana.png' };
 const currencies = { Ethereum: 'ETH', Polygon: 'POL', Solana: 'SOL' };
 const formattedBid = computed(() => `${new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 4 }).format(props.currentBid)} ${currencies[props.network]}`);
@@ -42,7 +43,8 @@ const formattedBid = computed(() => `${new Intl.NumberFormat('ru-RU', { maximumF
     <BaseBadge v-if="!isAuctionActive" variant="muted">Аукцион завершён</BaseBadge>
     <div class="card__actions">
       <a :href="`detail.html?id=${encodeURIComponent(id)}`" class="card__link">Подробнее о работе</a>
-      <BaseButton :disabled="!isAuctionActive || busy" @click="$emit('bid', id)">Сделать ставку</BaseButton>
+      <BaseButton :disabled="!isAuctionActive || busy" @click.stop="$emit('place-bid', id)">Сделать ставку</BaseButton>
+      <BaseButton variant="secondary" :aria-pressed="watched" @click.stop="$emit('toggle-watchlist', id)">{{ watched ? 'Убрать из отслеживаемых' : 'Отслеживать' }}</BaseButton>
     </div>
   </article>
 </template>

@@ -1,5 +1,6 @@
 node_modules/
 dist/
 public/images/
+.idea/
 *.log
-.DS_Store
+.env.local

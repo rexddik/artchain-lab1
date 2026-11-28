@@ -33,3 +33,4 @@ export function parseAmount(value) {
   if (!Number.isFinite(amount) || amount <= 0 || amount > 1e9) throw new Error("Сумма должна быть больше нуля и не более 1 000 000 000.");
   return amount;
 }
+

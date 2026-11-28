@@ -1,5 +1,4 @@
 import { ref } from 'vue';
-import { initialNFTs } from '../data/nfts.js';
 import { getNFTs, createBid, createNFT } from '../api.js';
 import { validateNFTs, isNFT, parseAmount, isImagePath, currencies } from '../model.js';
 
@@ -11,8 +10,7 @@ const toCard = token => ({
   imageUrl: token.image, category: token.category, tags: [...token.tags]
 });
 
-export function useGallery() {
-  const items = ref(initialNFTs.map(item => ({ ...item, tags: [...item.tags] })));
+export function useGallery(items) {
   const loading = ref(false);
   const busy = ref(false);
   const loadError = ref('');

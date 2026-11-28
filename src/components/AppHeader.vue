@@ -1,13 +1,15 @@
 <script setup>
 defineProps({
   activePage: { type: String, default: 'catalog' },
-  title: { type: String, default: 'ArtChain' }
+  title: { type: String, default: 'ArtChain' },
+  watchCount: { type: Number, default: 0 },
+  totals: { type: Array, default: () => [] }
 });
 const links = [
   { id: 'index', label: 'Главная', href: 'index.html' },
   { id: 'catalog', label: 'Каталог работ', href: 'catalog.html' },
   { id: 'detail', label: 'Карточка работы', href: 'detail.html' },
-  { id: 'collection', label: 'Мой кошелёк', href: 'collection.html' },
+  { id: 'collection', label: 'Моя коллекция', href: 'collection.html' },
   { id: 'checkout', label: 'Сделать ставку', href: 'checkout.html' }
 ];
 </script>
@@ -16,6 +18,7 @@ const links = [
   <header class="page__header header">
     <h1 class="header__title">{{ title }}</h1>
     <p class="header__text">Маркетплейс цифрового искусства и NFT-токенов</p>
+  <div class="header__text"><p>Отслеживаемых NFT: {{ watchCount }}</p><p v-if="totals.length">Оценка: <span v-for="(total, index) in totals" :key="total.network">{{ index ? ' · ' : '' }}{{ new Intl.NumberFormat('ru-RU', { maximumFractionDigits: 4 }).format(total.amount) }} {{ total.currency }}</span></p></div>
   </header>
   <nav class="page__menu menu" aria-label="Основная навигация">
     <ul class="menu__list">
